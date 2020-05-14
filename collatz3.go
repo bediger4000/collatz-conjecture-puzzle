@@ -6,7 +6,7 @@ func main() {
 
 	prev := make(map[int64]int)
 
-	for i := 1; i < 1000000; i++ {
+	for i := 1; i <= 1000000; i++ {
 		iters := collatz(i, prev)
 		prev[int64(i)] = iters
 	}
