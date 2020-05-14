@@ -60,7 +60,6 @@ func (cs CollatzSequence) appears(n int64) bool {
 }
 
 func (cs CollatzSequence) add(n, m int64) {
-	fmt.Printf("/* Adding %d: %d */\n", n, m)
 	cs[n] = m
 }
 
