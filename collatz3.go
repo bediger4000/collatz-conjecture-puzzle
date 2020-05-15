@@ -1,31 +1,35 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 
 	prev := make(map[int64]int)
+	maxIters := -1
+	var i, maxItersN int64
 
-	for i := 1; i <= 1000000; i++ {
+	begin := time.Now()
+	for i = 1; i <= 1000000; i++ {
+		if _, ok := prev[i]; ok {
+			continue
+		}
 		iters := collatz(i, prev)
 		prev[int64(i)] = iters
-	}
-
-	maxIters := -1
-	var maxItersN int64
-	for n, iters := range prev {
 		if iters > maxIters {
 			maxIters = iters
-			maxItersN = n
+			maxItersN = i
 		}
 	}
+	et := time.Since(begin)
 
-	fmt.Printf("%d requires %d iterations\n", maxItersN, maxIters)
+	fmt.Printf("%d requires %d iterations, found in %v\n", maxItersN, maxIters, et)
 }
 
-func collatz(m int, prev map[int64]int) int {
+func collatz(n int64, prev map[int64]int) int {
 	iterations := 0
-	n := int64(m)
 	for n != 1 {
 		if i, ok := prev[n]; ok {
 			return iterations + i
