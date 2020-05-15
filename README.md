@@ -18,6 +18,9 @@ I get 524 numbers in the sequence for starting number 837799
     837799 requires 524 iterations, found in 614.514707ms
 
 My iterations may be 1 less than number of terms in the sequence.
+[This fellow](https://www.mathblog.dk/project-euler-14/) got 525
+elements in the sequence for 837799.
+He also has a clever memoization using an array.
 
 ## Programs
 
@@ -76,6 +79,13 @@ is substantially slower:
     837799 requires 524 iterations, found in 279.643536ms
 
 Maybe premature optimization is a bad idea after all.
+Or maybe using a Go map is not the right approach.
+It could be that a dedicated hash table somewhat optimized
+for this problem would be faster.
+Using a plain array would require a large array.
+I tried `[50000000]int` Go arrays and still encountered sequence elements bigger than that.
+Possibly some kind of partial memoization could be triggered up using arrays to store previous
+sequence lengths, but it doesn't seem worth it.
 
 The GaphViz diagramming version uses memoization slightly
 differently, to avoid outputting multiple edges,
