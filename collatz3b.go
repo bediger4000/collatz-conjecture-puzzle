@@ -5,15 +5,25 @@ import (
 	"time"
 )
 
+/*
+ * Caching as https://www.mathblog.dk/project-euler-14/ does it.
+ * Extremely clever.
+ */
+
+const (
+	maxstart  = 2000000
+	cachesize = 2000001
+)
+
 func main() {
 
 	maxIters := -1
 	var i, maxItersN int64
-	var cache [2000001]int
+	var cache [cachesize]int
 	cache[1] = 1
 
 	begin := time.Now()
-	for i = 2; i <= 2000000; i++ {
+	for i = 2; i <= maxstart; i++ {
 		iterations := 0
 		n := i
 		for n != 1 && n >= i {
