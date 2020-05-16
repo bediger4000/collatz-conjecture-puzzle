@@ -35,6 +35,7 @@ All of the programs can be easily built from the command line:
 * [collatz1.go](collatz1.go) - print out a collatz sequence for a single number: `./collatz1 10`
 * [collatz2.go](collatz2.go) - print out length of collatz sequences for N numbers: `./collatz2 $N`
 * [collatz3.go](collatz3.go) - find maximum length of collatz sequence for numbers up to 1,000,000: `./collatz3`. Memoized algorithm.
+* [collatz3b.go](collatz3b.go) - find maximum length of collatz sequence for numbers up to 1,000,000: `./collatz3b`. Clever array memoizing algorithm.
 * [collatz4.go](collatz4.go) - find maximum length of collatz sequence for numbers up to 1,000,000: `./collatz4`. Straightforward algorithm.
 * [collatz5.go](collatz5.go) - draw a [graphviz](https://graphviz.org/) of Collatz sequences from 1 to N: `./collatz5 $N > collatz.dot`
 
