@@ -11,8 +11,8 @@ import (
  */
 
 const (
-	maxstart  = 2000000
-	cachesize = 2000001
+	maxstart  = 1000000
+	cachesize = 1000001
 )
 
 func main() {
