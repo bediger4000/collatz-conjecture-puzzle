@@ -74,19 +74,25 @@ ends up encountering 1) is false, my memoization will break.
 It turns out that at least on my laptop, in Go, the memoized code
 is substantially slower:
 
-    1201 % ./collatz3  # memoized
+    $ ./collatz3  # memoized
     837799 requires 524 iterations, found in 667.24825ms
-    1202 % ./collatz4  # not memoized
+    $ ./collatz4  # not memoized
     837799 requires 524 iterations, found in 279.643536ms
+    $ ./collatz3b # clever caching
+    837799 requires 525 iterations, found in 17.328493ms
+
+Yes, I counted off-by-one vs what some other people did.
 
 Maybe premature optimization is a bad idea after all.
 Or maybe using a Go map is not the right approach.
 It could be that a dedicated hash table somewhat optimized
 for this problem would be faster.
-Using a plain array would require a large array.
-I tried `[50000000]int` Go arrays and still encountered sequence elements bigger than that.
-Possibly some kind of partial memoization could be triggered up using arrays to store previous
-sequence lengths, but it doesn't seem worth it.
+
+The clever caching of the Danish MathBlog version really speeds
+up the whole process.
+It memoizes sequence lengths of starting
+numbers inside 1 - 1,000,000 only, where my memoizing version cached
+every number in any Collatz sequence.
 
 The GaphViz diagramming version uses memoization slightly
 differently, to avoid outputting multiple edges,
